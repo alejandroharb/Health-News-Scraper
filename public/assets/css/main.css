@@ -1,0 +1,38 @@
+.background-img{
+  	position: fixed;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom:0;
+    z-index: -1000;
+    display: block;
+    width: 100%;
+
+    background-image: url("../img/cancer-news.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position:center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+
+    -webkit-filter: blur(4px);
+    -moz-filter: blur(4px);
+    -o-filter: blur(4px);
+    -ms-filter: blur(4px);
+    filter: blur(4px);
+}
+#scientificAmCard{
+  display: none;
+  margin:50px auto 15px auto!important;
+}
+.card-title {
+  color: #FAFAFA;
+}
+.article-card {
+  width:430px;
+  height: 360px;
+  margin:10px auto;
+}
