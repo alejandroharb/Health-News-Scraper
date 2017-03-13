@@ -40,3 +40,8 @@
   height: 360px;
   margin:10px auto;
 }
+#commentInsert p {
+  font-family: cursive;
+  font-size:18px;
+  padding-left:15px;
+}

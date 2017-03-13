@@ -19,12 +19,39 @@ module.exports = function (app) {
         var webURL = 'https://www.scientificamerican.com/health';
         var rootURL = 'https://www.scientificamerican.com'
         scrapeSiteArticles(webURL, rootURL, function () {
-            Article.find({}, function (error, data) {
-                if (error) { console.log(error) };
-                res.send(data);
-            });
+            Article.find({})
+            .populate("comment")
+            .exec(function(error, articleDoc) {
+                if(error) {console.log(error)}
+                else {
+                    console.log(articleDoc)
+                    res.json(articleDoc)
+                }
+            })
         });
-
+    })
+    app.post('/newComment', function(req, res) {
+        var data = req.body;
+        var commentData = {body: data.comment}
+        console.log("=========comment data========")
+        console.log(data)
+        var newComment = new Comment(commentData);
+        newComment.save(function(error, commentDoc) {
+            if (error) { console.log(error)}
+            else {
+                console.log("commentDoc")
+                console.log(commentDoc)
+                Article.findOneAndUpdate({"_id": data.articleId},{ $push: {"comment": commentDoc._id}}, {new:true})
+                    .exec(function(err, articleDoc) {
+                        if(err) {
+                            console.log(err);
+                        } else {
+                            //response of new article object with comment
+                            res.json(articleDoc)
+                        }
+                    })
+            }
+        })
     })
 }
 
