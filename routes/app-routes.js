@@ -7,7 +7,7 @@ var databaseURL = "healthNewsScraped";
 // var collections = ["scientificAmerican"];
 // var db = mongojs(databaseURL, collections)
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/healthNewsScraped');
+mongoose.connect('mongodb://heroku_36q0hwf6:62ded92ilnnkeekl47dl48dleh@ds125060.mlab.com:25060/heroku_36q0hwf6');
 mongoose.Promise = Promise;
 
 
