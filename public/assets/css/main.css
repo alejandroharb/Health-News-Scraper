@@ -28,8 +28,12 @@
   display: none;
   margin:50px auto 15px auto!important;
 }
-.card-title {
-  color: #FAFAFA;
+.article-title {
+    background-color: rgba(250, 250, 250, 0.7)!important;
+    color: black!important;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
 }
 .article-card {
   width:430px;

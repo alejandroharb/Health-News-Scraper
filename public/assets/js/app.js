@@ -26,14 +26,15 @@ function createArticleCard(title, link, imgLink) {
         class: "responsive-img"
     });
     var articleLink = $('<a>').attr('href', link).append(image);
-    var title = $('<span>').attr('class', 'card-title truncate card-title').html(title);
+    var title = $('<span>').attr('class', 'card-title article-title card-title').html(title);
     var imgDiv = $('<div>').attr('class', 'card-image waves-effect waves-block waves-light').append(articleLink).append(title);
     
-    var commentsTitle = $('<span  class = "activator grey-text text-darken-4"> Comments <i class="material-icons right">close</i></span>');
-    var contentDiv = $('<div>').attr('class', 'card-content').append(commentsTitle);
+    var contentTitle = $('<span  class = "card-title activator grey-text text-darken-4"> Comments <i class="material-icons right">more_vert</i></span>');
+    var contentDiv = $('<div>').attr('class', 'card-content').append(contentTitle);
 
+    var commentsTitle = $('<span>').attr('class', 'card-title grey-text text-darken-4').html(' Comments <i class="material-icons right">close</i>');
     var comments = $('<div>').attr('id', 'commentsInsert');    
-    var cardRevealDiv = $('<div>').attr('class', 'card-reveal').append(comments)
+    var cardRevealDiv = $('<div>').attr('class', 'card-reveal').append(commentsTitle).append(comments)
     cardDiv.append(imgDiv).append(contentDiv).append(cardRevealDiv);
     columnDiv.append(cardDiv);
     $('#articles_wrapper').append(columnDiv);
