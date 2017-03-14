@@ -20,3 +20,31 @@
 <div class="container">
     <div class="row" id="articles_wrapper"></div>
 </div>
+<script>
+        function handleCommentPost(id) {
+            var data = $('.'+id);
+            var comment =  data[0].value;
+            var articleId = id;
+            var commentData = {
+                comment: comment,
+                articleId: articleId
+            }
+            console.log("commentData")
+            console.log(commentData)
+            $.post('/newComment', commentData, function (response) {
+                console.log("response")
+                console.log(response)
+                var articleId = response[0]._id;
+                var comments = response[0].comment;
+                console.log("article id" + articleId)
+                $('#' + id + ' #commentsInsert').html("");
+                comments.forEach(function (elem, index) {
+                    console.log("comments elements: ")
+                    console.log(elem)
+                    var newP = $('<p>').html('<i class="material-icons">chat_bubble_outline</i>   ' + elem.body);
+                    $('#' + id + ' #commentsInsert').append(newP);
+                })
+                $('.'+id).val("");
+            })
+    }
+</script>
