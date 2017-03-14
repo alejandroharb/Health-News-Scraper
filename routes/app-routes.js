@@ -48,7 +48,14 @@ module.exports = function (app) {
                             console.log(err);
                         } else {
                             //response of new article object with comment
-                            res.json(articleDoc)
+                            Article.find({_id: articleDoc._id})
+                                .populate("comment")
+                                .exec(function(error, articleDocPopulated) {
+                                    if(error) {console.log(error)}
+                                    else {
+                                        res.json(articleDocPopulated)
+                                    }
+                                })
                         }
                     })
             }
